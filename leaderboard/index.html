@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>COPS Winter Camp: Leaderboard</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="icon" href="../web/images/favicon.png">
+  <!-- <link rel="stylesheet" href="../web/css/styles.css"> -->
+    <link href="../web/css/fontawesome-all.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+
+    <a class="navbar-brand logo-image" href="../web/index.html"><button class="button">COPS Winter Camp</button></a>
+
+
+
+
+</nav> <!-- end of navbar -->
+<!-- end of navigation -->
+
+<!-- Search bar -->
+<br><br><br><br>
+<center>
+<div  class="search-box">
+	<input type="text">
+	<i id="icon" class="search"></i>
+</div>
+</center>
+<!--end of Search bar -->
+
+<body ng-app="myModule">
+	<div class="container" ng-controller="myController">
+
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+				<div class="tableHeader">Leaderboard</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+				<table class="table-bordered">
+					<thead>
+						<tr class="camper">
+							<th>#</th>
+							<th>Winter Camper Name</th>
+							<th class="number" ng-click="sortData('firstTask')">
+								Points in 1st Task
+								<div ng-class="getSortClass('firstTask')"></div>
+							</th>
+              <th class="number" ng-click="sortData('secondTask')">
+								Points in 2nd Task
+								<div ng-class="getSortClass('secondTask')"></div>
+							</th>
+               <th class="number" ng-click="sortData('thirdTask')">
+								Points in 3rd Task
+								<div ng-class="getSortClass('thirdTask')"></div>
+							</th>
+							<th class="number" ng-click="sortData('alltime')">
+								All time points
+								<div ng-class="getSortClass('alltime')"></div>
+							</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="camper in campers | orderBy: sortColumn : reverseSort">
+						<tr class="camper">
+							<td>{{$index+1}}</td>
+							<td class="name">
+								<a href="https://www.freecodecamp.com/{{camper.username}}" target="_blank">
+									<img class="profileImg" src={{camper.img}}/>
+									<span>{{camper.username}}</span>
+								</a>
+							</td>
+							<td class="number">{{camper.firstTask}}</td>
+							<td class="number">{{camper.secondTask}}</td>
+              <td class="number">{{camper.thirdTask}}</td>
+              <td class="number">{{camper.alltime}}</td>
+
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+				<div class="tableFooter">Winter Camp by <a style="color:white;" href="www.copsiitbhu.co.in">COPS</a></div>
+			</div>
+		</div>
+
+	</div>
+  <!-- Copyright -->
+  <br>
+  <div class="copyright">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <center><p class="p-small">Copyright © COPS Winter Camp</p></center>
+              </div> <!-- end of col -->
+          </div> <!-- enf of row -->
+      </div> <!-- end of container -->
+  </div> <!-- end of copyright -->
+  <!-- end of copyright -->
+</body>
+<!-- partial -->
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
